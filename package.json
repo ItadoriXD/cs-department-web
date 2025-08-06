@@ -1,0 +1,13 @@
+{
+  "name": "cs-department-website",
+  "version": "1.0.0",
+  "description": "Department of Computer Science website",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve .",
+    "build": "echo 'Static site, no build needed'"
+  },
+  "devDependencies": {
+    "serve": "^14.0.0"
+  }
+}
