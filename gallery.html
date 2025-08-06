@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gallery - Department of Computer Science</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .gallery-grid img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        .gallery-grid img:hover {
+            transform: scale(1.05);
+        }
+        .gallery-description {
+            text-align: center;
+            max-width: 800px;
+            margin: 20px auto;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="/logo.png" alt="Department Logo" class="logo">
+        <h1>Department of Computer Science</h1>
+        <h2>Srikrishna College, Bagula</h2>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="faculty.html">Faculty</a>
+            <a href="courses.html">Courses</a>
+            <a href="announcements.html">Announcements</a>
+            <a href="schedule.html">Schedule</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="vault.html">Student Vault</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h3>Department Gallery</h3>
+            <p class="gallery-description">
+                Welcome to the Department Gallery of Computer Science, Srikrishna College, Bagula.
+                Here we showcase glimpses of various departmental events, workshops, seminars, student activities, and memorable moments.
+                Explore the vibrant life of our department through these photographs.
+            </p>
+        </section>
+
+        <section class="gallery-grid">
+            <img src="/gallery/event1.jpg" alt="Event 1">
+            <img src="/gallery/event2.jpg" alt="Event 2">
+            <img src="/gallery/event3.jpg" alt="Event 3">
+            <img src="/gallery/event4.jpg" alt="Event 4">
+            <img src="/gallery/event5.jpg" alt="Event 5">
+            <img src="/gallery/event6.jpg" alt="Event 6">
+            <!-- Add more images as needed -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Department of Computer Science, Srikrishna College, Bagula</p>
+        <p class="credit">&copy; Aninda Sundar Mandal</p>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+</body>
+</html>
