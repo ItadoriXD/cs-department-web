@@ -5,29 +5,23 @@
     <title>Gallery - Department of Computer Science</title>
     <link rel="stylesheet" href="styles/main.css">
     <style>
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            padding: 20px;
+        .gallery-options {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 50px 0;
         }
-        .gallery-grid img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
+        .gallery-options a {
+            padding: 20px 30px;
+            background-color: #f0f0f0;
             border-radius: 10px;
-            transition: transform 0.3s;
-        }
-        .gallery-grid img:hover {
-            transform: scale(1.05);
-        }
-        .gallery-description {
-            text-align: center;
-            max-width: 800px;
-            margin: 20px auto;
-            font-size: 1rem;
-            line-height: 1.5;
+            text-decoration: none;
+            font-weight: bold;
             color: #333;
+            transition: background-color 0.3s;
+        }
+        .gallery-options a:hover {
+            background-color: #ddd;
         }
     </style>
 </head>
@@ -50,21 +44,12 @@
     <main>
         <section class="hero">
             <h3>Department Gallery</h3>
-            <p class="gallery-description">
-                Welcome to the Department Gallery of Computer Science, Srikrishna College, Bagula.
-                Here we showcase glimpses of various departmental events, workshops, seminars, student activities, and memorable moments.
-                Explore the vibrant life of our department through these photographs.
-            </p>
+            <p>Select a category below to explore photos.</p>
         </section>
 
-        <section class="gallery-grid">
-            <img src="/gallery/event1.jpg" alt="Event 1">
-            <img src="/gallery/event2.jpg" alt="Event 2">
-            <img src="/gallery/event3.jpg" alt="Event 3">
-            <img src="/gallery/event4.jpg" alt="Event 4">
-            <img src="/gallery/event5.jpg" alt="Event 5">
-            <img src="/gallery/event6.jpg" alt="Event 6">
-            <!-- Add more images as needed -->
+        <section class="gallery-options">
+            <a href="department-photos.html">Department Photos</a>
+            <a href="event-photos.html">Event Photos</a>
         </section>
     </main>
 
