@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Department Photos</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .photo-grid img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="/logo.png" alt="Department Logo" class="logo">
+        <h1>Department Photos</h1>
+    </header>
+
+    <main>
+        <section class="hero">
+            <p>This section showcases the infrastructure and environment of the Computer Science Department at Srikrishna College, Bagula.</p>
+        </section>
+
+        <section class="photo-grid">
+            <img src="/gallery/department1.jpg" alt="Department Photo 1">
+            <img src="/gallery/department2.jpg" alt="Department Photo 2">
+            <img src="/gallery/department3.jpg" alt="Department Photo 3">
+            <img src="/gallery/department4.jpg" alt="Department Photo 4">
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Department of Computer Science, Srikrishna College, Bagula</p>
+        <p class="credit">&copy; Aninda Sundar Mandal</p>
+    </footer>
+</body>
+</html>
