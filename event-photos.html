@@ -7,34 +7,79 @@
     <style>
         .event-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
             padding: 20px;
         }
-        .event-grid img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
+        .event-card {
+            background-color: #fff;
             border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+            padding: 15px;
+            text-decoration: none;
+            color: #333;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            border-color: #38bdf8;
+        }
+        .event-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .event-card h4 {
+            font-size: 1.1rem;
         }
     </style>
 </head>
 <body>
     <header>
-        <img src="/logo.png" alt="Department Logo" class="logo">
-        <h1>Event Photos</h1>
+        <img src="public/logo.png" alt="Department Logo" class="logo">
+        <h1>Department of Computer Science</h1>
+        <h2>Srikrishna College, Bagula | Estd: 1950</h2>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="faculty.html">Faculty</a>
+            <a href="courses.html">Courses</a>
+            <a href="announcements.html">Announcements</a>
+            <a href="schedule.html">Schedule</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="vault.html">Student Vault</a>
+        </nav>
     </header>
 
     <main>
         <section class="hero">
-            <p>Here are snapshots from various department events such as workshops, seminars, and cultural activities.</p>
+            <h3>Our Department Events</h3>
+            <p>From workshops and seminars to cultural activities, explore the moments that define our vibrant department life. Click on an event to see the gallery.</p>
         </section>
 
         <section class="event-grid">
-            <img src="/gallery/event1.jpg" alt="Event 1">
-            <img src="/gallery/event2.jpg" alt="Event 2">
-            <img src="/gallery/event3.jpg" alt="Event 3">
-            <img src="/gallery/event4.jpg" alt="Event 4">
+            <a href="jubilee-event.html" class="event-card">
+                <img src="public/gallery/jubilee1.jpg" alt="Jubilee year celibration preview">
+                <h4>Jubilee year celibration</h4>
+            </a>
+
+            <a href="picnic-event.html" class="event-card">
+                <img src="public/gallery/picnic_day.jpg" alt="Picnic 2025 preview">
+                <h4>Picnic 2025</h4>
+            </a>
+
+            <a href="#" class="event-card">
+                <img src="/gallery/event3.jpg" alt="Event 3">
+                <h4>Event 3</h4>
+            </a>
+            <a href="#" class="event-card">
+                <img src="/gallery/event4.jpg" alt="Event 4">
+                <h4>Event 4</h4>
+            </a>
         </section>
     </main>
 

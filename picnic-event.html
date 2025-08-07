@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Picnic 2025 - Event Photos</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        /* Photo Grid Styles */
+        .photo-grid {
+            display: grid;
+            justify-content: center; /* Center the single photo */
+            padding: 20px;
+        }
+        .photo-card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            position: relative;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+            width: 300px; /* Define a width for the single card */
+        }
+        .photo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            border-color: #38bdf8;
+        }
+        .photo-card img {
+            display: block;
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .photo-card:hover img {
+            transform: scale(1.1);
+        }
+        .photo-card::after {
+            content: 'Click to Enlarge';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(2, 16, 32, 0.6);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 500;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .photo-card:hover::after {
+            opacity: 1;
+        }
+
+        /* Lightbox Modal Styles */
+        .lightbox-modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); justify-content: center; align-items: center; }
+        .lightbox-content { max-width: 85%; max-height: 85%; animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .close-btn { position: absolute; top: 15px; right: 35px; color: #fff; font-size: 40px; font-weight: bold; cursor: pointer; user-select: none; transition: color 0.3s; }
+        .close-btn:hover { color: #bbb; }
+        /* Hide arrows since there is only one image */
+        .prev-btn, .next-btn { display: none; }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="public/logo.png" alt="Department Logo" class="logo">
+        <h1>Department of Computer Science</h1>
+        <h2>Srikrishna College, Bagula | Estd: 1950</h2>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="faculty.html">Faculty</a>
+            <a href="courses.html">Courses</a>
+            <a href="announcements.html">Announcements</a>
+            <a href="schedule.html">Schedule</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="vault.html">Student Vault</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h3>Picnic 2025</h3>
+            <p style="max-width: 800px; margin: 0 auto;">
+                A wonderful day of fun, food, and friendship! Our annual department picnic was a great opportunity for students and faculty to relax and connect outside the classroom.
+            </p>
+        </section>
+
+        <section class="photo-grid">
+            <figure class="photo-card">
+                <img src="public/gallery/picnic_day.jpg" alt="Picnic 2025 photo">
+            </figure>
+        </section>
+    </main>
+
+    <div id="myLightbox" class="lightbox-modal">
+        <span class="close-btn" onclick="closeLightbox()">&times;</span>
+        <img class="lightbox-content" id="lightboxImg">
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Department of Computer Science, Srikrishna College, Bagula</p>
+        <p class="credit">&copy; Aninda Sundar Mandal</p>
+    </footer>
+
+    <script>
+        const lightbox = document.getElementById('myLightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const photoCard = document.querySelector('.photo-grid .photo-card');
+        
+        photoCard.addEventListener('click', () => {
+            const imgElement = photoCard.querySelector('img');
+            lightbox.style.display = 'flex';
+            lightboxImg.src = imgElement.src;
+            document.addEventListener('keydown', handleKey);
+        });
+
+        function closeLightbox() {
+            lightbox.style.display = 'none';
+            document.removeEventListener('keydown', handleKey);
+        }
+
+        function handleKey(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jubilee Celebration - Event Photos</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <style>
+        /* Photo Grid Styles */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            padding: 20px;
+        }
+        .photo-card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            position: relative;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .photo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            border-color: #38bdf8;
+        }
+        .photo-card img {
+            display: block;
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .photo-card:hover img {
+            transform: scale(1.1);
+        }
+        .photo-card::after {
+            content: 'Click to Enlarge';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(2, 16, 32, 0.6);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 500;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .photo-card:hover::after {
+            opacity: 1;
+        }
+
+        /* Lightbox Modal Styles */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+        }
+        .lightbox-content {
+            max-width: 85%;
+            max-height: 85%;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Close button and Navigation Arrows */
+        .close-btn, .prev-btn, .next-btn {
+            position: absolute;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+            transition: color 0.3s;
+        }
+        .close-btn:hover, .prev-btn:hover, .next-btn:hover {
+            color: #bbb;
+        }
+        .close-btn {
+            top: 15px;
+            right: 35px;
+        }
+        .prev-btn {
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+        }
+        .next-btn {
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="public/logo.png" alt="Department Logo" class="logo">
+        <h1>Department of Computer Science</h1>
+        <h2>Srikrishna College, Bagula | Estd: 1950</h2>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="faculty.html">Faculty</a>
+            <a href="courses.html">Courses</a>
+            <a href="announcements.html">Announcements</a>
+            <a href="schedule.html">Schedule</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="vault.html">Student Vault</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h3>Jubilee Year Celebration</h3>
+            <p style="max-width: 800px; margin: 0 auto;">
+                In honor of Srikrishna College's 75th year of excellence, the Department of Computer Science held a vibrant celebration. The event featured a student-led procession and showcased innovative projects, including a remarkable student-built robot, embodying the spirit of creativity and progress that defines our department.
+            </p>
+        </section>
+
+        <section class="photo-grid">
+            <figure class="photo-card">
+                <img src="public/gallery/jubilee1.jpg" alt="Jubilee year celibration photo 1">
+            </figure>
+            <figure class="photo-card">
+                <img src="public/gallery/jubilee2.jpg" alt="Jubilee year celibration photo 2">
+            </figure>
+            <figure class="photo-card">
+                <img src="public/gallery/jubilee3.jpg" alt="Jubilee year celibration photo 3">
+            </figure>
+            <figure class="photo-card">
+                <img src="public/gallery/jubilee4.jpg" alt="Jubilee year celibration photo 4">
+            </figure>
+            <figure class="photo-card">
+                <img src="public/gallery/jubilee5.jpg" alt="Jubilee year celibration photo 5">
+            </figure>
+        </section>
+    </main>
+
+    <div id="myLightbox" class="lightbox-modal">
+        <span class="close-btn" onclick="closeLightbox()">&times;</span>
+        <img class="lightbox-content" id="lightboxImg">
+        <a class="prev-btn" onclick="changeImage(-1)">&#10094;</a>
+        <a class="next-btn" onclick="changeImage(1)">&#10095;</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Department of Computer Science, Srikrishna College, Bagula</p>
+        <p class="credit">&copy; Aninda Sundar Mandal</p>
+    </footer>
+
+    <script>
+        const lightbox = document.getElementById('myLightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const photoCards = document.querySelectorAll('.photo-grid .photo-card');
+        let currentIndex = 0;
+
+        photoCards.forEach((card, index) => {
+            card.addEventListener('click', () => {
+                openLightbox(index);
+            });
+        });
+
+        function openLightbox(index) {
+            currentIndex = index;
+            const imgElement = photoCards[currentIndex].querySelector('img');
+            lightboxImg.src = imgElement.src;
+            lightbox.style.display = 'flex';
+            document.addEventListener('keydown', handleKey);
+        }
+
+        function closeLightbox() {
+            lightbox.style.display = 'none';
+            document.removeEventListener('keydown', handleKey);
+        }
+
+        function changeImage(direction) {
+            currentIndex += direction;
+            if (currentIndex >= photoCards.length) {
+                currentIndex = 0;
+            } else if (currentIndex < 0) {
+                currentIndex = photoCards.length - 1;
+            }
+            const imgElement = photoCards[currentIndex].querySelector('img');
+            lightboxImg.src = imgElement.src;
+        }
+
+        function handleKey(e) {
+            if (e.key === 'ArrowRight') {
+                changeImage(1);
+            } else if (e.key === 'ArrowLeft') {
+                changeImage(-1);
+            } else if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        }
+    </script>
+</body>
+</html>
